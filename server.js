@@ -11,8 +11,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //This requires that the specified file paths below exist so the app knows where to search for data.
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
+require("./app/routing/apiRoutes.js")(app);
+require("./app/routing/htmlRoutes.js")(app);
 
 //Code below runs app on server and returns a console.log is connection is successful.
 app.listen(PORT, function() {

@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/Zgarcia72292/FriendFinder#readme",
   "dependencies": {
+    "array-sort": "^1.0.0",
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "path": "^0.12.7"
   }

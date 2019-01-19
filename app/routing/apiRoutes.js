@@ -28,11 +28,12 @@ module.exports = function(app) {
    var newUserdata=req.body;
    //This is the array that will be storing the difference in scores
    var storeTotaldifference = []
-   var results = 0;
+   
 
    //this for loop goes into each object in the friendsData array, then 
    //goes into the scores array and compares each//
     for (var i = 0; i < friendsData.length; i++){
+      var results = 0;
         for (var j = 0; j < friendsData[i].scores.length; j++){
           results += (parseInt(newUserdata.scores[j]) - parseInt(friendsData[i].scores[j]));
         }

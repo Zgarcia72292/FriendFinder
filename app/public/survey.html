@@ -235,7 +235,7 @@
 
 
 
-    </div>
+  
 
     
     <div class="modal" tabindex="-1" role="dialog">
@@ -266,11 +266,11 @@
 
     <footer class="footer">
         <div class="container">
-          <p><a href="">API Friends List</a> | <a href="">GitHub Repo</a></p>
+          <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/Zgarcia72292/FriendFinder">GitHub Repo</a></p>
         </div>
       </footer>
 
-    
+    </div>
 </body>
 
 <script type="text/javascript">
@@ -289,7 +289,7 @@ $("#submitButton").on("click", function(){
 //If the previous function returns true...      
  
 //store the data from the input fields into an object
-var newData = {
+var newUserdata = {
     name: $("#name").val(),
     photo: $("#photoLink").val(),
     scores: [
@@ -307,7 +307,7 @@ var newData = {
 };
 
 //now we post request the new objected to be added to the friendsData api//
-$.post("/api/friends", friendsData, function(data) {
+$.post("/api/friends", newUserdata, function(data) {
 
 //then the data is displayed to a modal// 
 $("#result-name").text(data.name);

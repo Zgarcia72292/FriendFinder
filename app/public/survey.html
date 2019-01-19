@@ -229,7 +229,7 @@
         <hr>
 
         <div>
-            <a href=“/survey”><button type=“button” class=“btn btn-lg btn-primary”><h4><span class=“glyphicon glyphicon-list-alt”></span> Go to Survey</h4></button></a>
+           <button type=“button” id="submitButton" class=“btn btn-lg btn-primary”><h4><span class=“glyphicon glyphicon-list-alt”></span> Submit!</h4></button>
           </div>
 
 
@@ -237,9 +237,31 @@
 
     </div>
 
-
-
-
+    
+    <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Your Match!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div id= "result-name">
+                 </div>
+                 <div>
+                     <img id = "result-photo" src="">
+                </div>
+             
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+           
+            </div>
+          </div>
+        </div>
+      </div>
 
 
     <footer class="footer">
@@ -248,15 +270,62 @@
         </div>
       </footer>
 
-    </div>
+    
 </body>
 
 <script type="text/javascript">
 
+$("#submitButton").on("click", function(){
+
+//grabbed this function code from the friendFinder sample in the readme
+// function validateForm() {
+//        var isValid = true;
+//        $(".custom-select").each(function() {
+//          if ($(this).val() === "") {
+//            isValid = false;
+//          }
+//        })}
+
+//If the previous function returns true...      
+ 
+//store the data from the input fields into an object
+var newData = {
+    name: $("#name").val(),
+    photo: $("#photoLink").val(),
+    scores: [
+       parseInt($("#question1").val()), 
+       parseInt($("#question2").val()),
+       parseInt($("#question3").val()),
+       parseInt($("#question4").val()),
+       parseInt($("#question5").val()),
+       parseInt($("#question6").val()),
+       parseInt($("#question7").val()),
+       parseInt($("#question8").val()),
+       parseInt($("#question9").val()),
+       parseInt($("#question10").val())
+    ]
+};
+
+//now we post request the new objected to be added to the friendsData api//
+$.post("/api/friends", friendsData, function(data) {
+
+//then the data is displayed to a modal// 
+$("#result-name").text(data.name);
+$("#result-photo").attr("src", data.photo);
+$(".modal").modal("toggle");
+
+});
+
+
+ 
+    
+    
+    })
 
 
 
 </script>
+
 
 
 
